@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom theme colors
+				linkflow: {
+					blue: '#3B82F6',
+					purple: '#8B5CF6',
+					pink: '#EC4899',
+					orange: '#F97316',
+					green: '#10B981'
 				}
 			},
 			borderRadius: {
@@ -84,11 +93,47 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'avatar-zoom': {
+					'0%': {
+						transform: 'scale(1)'
+					},
+					'100%': {
+						transform: 'scale(1.05)'
+					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'link-pulse': {
+					'0%, 100%': {
+						transform: 'scale(1)'
+					},
+					'50%': {
+						transform: 'scale(1.02)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'avatar-zoom': 'avatar-zoom 0.3s ease-out forwards',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'link-pulse': 'link-pulse 2s infinite ease-in-out'
+			},
+			backgroundImage: {
+				'gradient-1': 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)',
+				'gradient-2': 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+				'gradient-3': 'linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)',
+				'gradient-4': 'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)',
+				'gradient-5': 'linear-gradient(to right, #6a11cb 0%, #2575fc 100%)'
 			}
 		}
 	},

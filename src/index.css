@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -79,6 +73,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -90,6 +85,37 @@
   }
 }
 
+/* Theme color schemes */
+.theme-purple {
+  --theme-primary: 265, 89%, 66%;
+  --theme-secondary: 237, 86%, 64%;
+  --theme-accent: 273, 100%, 71%;
+}
+
+.theme-blue {
+  --theme-primary: 224, 76%, 48%;
+  --theme-secondary: 199, 89%, 48%;
+  --theme-accent: 213, 94%, 68%;
+}
+
+.theme-green {
+  --theme-primary: 142, 72%, 29%;
+  --theme-secondary: 168, 100%, 24%;
+  --theme-accent: 158, 64%, 52%;
+}
+
+.theme-pink {
+  --theme-primary: 330, 81%, 60%;
+  --theme-secondary: 351, 95%, 71%;
+  --theme-accent: 316, 73%, 52%;
+}
+
+.theme-orange {
+  --theme-primary: 27, 96%, 61%;
+  --theme-secondary: 14, 93%, 67%;
+  --theme-accent: 37, 92%, 50%;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -98,4 +124,25 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.avatar-container:hover .avatar {
+  @apply animate-avatar-zoom;
+}
+
+.link-item {
+  @apply relative overflow-hidden transition-all duration-200 transform hover:scale-102 hover:shadow-md;
+}
+
+.link-item::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+}
+
+.link-item:hover::before {
+  @apply opacity-100;
+  transform: translateX(100%);
+  transition: transform 0.7s;
 }
