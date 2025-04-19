@@ -17,7 +17,13 @@ export interface Link {
   icon?: string;
   enabled: boolean;
   order: number;
+  pinned?: boolean;
+  type: LinkType;
+  customColor?: string;
+  subtitle?: string;
 }
+
+export type LinkType = 'default' | 'youtube' | 'twitter' | 'instagram' | 'tiktok' | 'github' | 'linkedin' | 'email' | 'custom';
 
 export interface Theme {
   id: string;
@@ -25,8 +31,9 @@ export interface Theme {
   colorScheme: 'light' | 'dark' | 'system';
   primaryColor: string;
   backgroundColor: string;
-  buttonStyle: 'rounded' | 'pill' | 'square';
-  buttonAnimation?: string;
+  buttonStyle: 'rounded' | 'pill' | 'square' | 'soft' | 'glass' | 'outline' | 'minimal';
+  buttonAnimation?: 'none' | 'pulse' | 'bounce' | 'glow' | 'slide';
+  backgroundEffect?: 'none' | 'particles' | 'gradient' | 'shapes';
   customCSS?: string;
 }
 
@@ -34,6 +41,7 @@ export interface UserSettings {
   allowAnalytics: boolean;
   isProfilePublic: boolean;
   customDomain?: string;
+  cacheVersion?: number;
 }
 
 export type ThemeOption = {
@@ -41,4 +49,7 @@ export type ThemeOption = {
   name: string;
   previewClass: string;
   colorScheme: 'light' | 'dark' | 'system';
+  buttonStyle: 'rounded' | 'pill' | 'square' | 'soft' | 'glass' | 'outline' | 'minimal';
+  buttonAnimation?: 'none' | 'pulse' | 'bounce' | 'glow' | 'slide';
+  backgroundEffect?: 'none' | 'particles' | 'gradient' | 'shapes';
 };
