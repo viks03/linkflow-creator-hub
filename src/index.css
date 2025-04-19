@@ -191,14 +191,24 @@
   @apply hover:shadow-lg hover:shadow-primary/20 transition-shadow;
 }
 
+/* Fix for the group utility error - don't use @apply with group */
 .animation-slide {
-  @apply group overflow-hidden relative hover:translate-x-1 transition-transform;
+  @apply overflow-hidden relative transition-transform;
 }
+.animation-slide:hover {
+  @apply translate-x-1;
+}
+/* We'll add the group class directly in the markup instead */
 
 .animation-slide::after {
   content: '';
-  @apply absolute inset-0 bg-shimmer opacity-0 group-hover:opacity-100;
+  @apply absolute inset-0 bg-shimmer opacity-0;
   background-size: 200% 100%;
+}
+
+/* Add the group-hover class separately */
+.group .animation-slide::after {
+  @apply group-hover:opacity-100;
 }
 
 /* Special link styles */

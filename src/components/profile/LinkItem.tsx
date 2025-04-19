@@ -13,7 +13,16 @@ import {
   Move,
   Pin
 } from 'lucide-react';
-import { LINK_TYPE_CONFIG, BUTTON_STYLES, BUTTON_ANIMATIONS } from '@/constants';
+import { LINK_TYPE_CONFIG, BUTTON_STYLES } from '@/constants';
+
+// Define the BUTTON_ANIMATIONS constant that we're using in the component
+const BUTTON_ANIMATIONS = {
+  'none': '',
+  'pulse': 'animation-pulse',
+  'bounce': 'animation-bounce',
+  'glow': 'animation-glow',
+  'slide': 'animation-slide'
+};
 
 interface LinkItemProps {
   link: LinkType;
@@ -72,8 +81,6 @@ export function LinkItem({
     const styleClass = BUTTON_STYLES[buttonStyle as keyof typeof BUTTON_STYLES] || BUTTON_STYLES.rounded;
     const animationClass = BUTTON_ANIMATIONS[animation as keyof typeof BUTTON_ANIMATIONS] || '';
     
-    const linkTypeConfig = LINK_TYPE_CONFIG[link.type as keyof typeof LINK_TYPE_CONFIG] || LINK_TYPE_CONFIG.default;
-    
     return cn(
       styleClass,
       animationClass,
@@ -90,7 +97,6 @@ export function LinkItem({
     }
     
     const linkTypeConfig = LINK_TYPE_CONFIG[link.type as keyof typeof LINK_TYPE_CONFIG] || LINK_TYPE_CONFIG.default;
-    const iconName = linkTypeConfig.icon || 'link';
     
     return <Link className="w-5 h-5 mr-3" />;
   };
@@ -102,7 +108,9 @@ export function LinkItem({
     <div
       className={cn(
         "w-full max-w-md mx-auto mb-3 transition-all duration-300 link-item",
-        editable && "border border-dashed border-gray-300 hover:border-primary"
+        editable && "border border-dashed border-gray-300 hover:border-primary",
+        // Add the 'group' class here to make group-hover work in child elements
+        animation === 'slide' && "group"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

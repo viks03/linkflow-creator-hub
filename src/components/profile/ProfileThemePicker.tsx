@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Check, Refresh } from 'lucide-react';
+import { Check, RefreshCw } from 'lucide-react';
 import {
   Tabs,
   TabsContent,
@@ -11,6 +11,15 @@ import { Button } from "@/components/ui/button";
 import { ThemeOption } from '@/types';
 import { THEME_OPTIONS, BUTTON_STYLES } from '@/constants';
 import { useToast } from '@/components/ui/use-toast';
+
+// Define button animations constant
+const BUTTON_ANIMATIONS = {
+  'none': '',
+  'pulse': 'animation-pulse',
+  'bounce': 'animation-bounce',
+  'glow': 'animation-glow',
+  'slide': 'animation-slide'
+};
 
 interface ProfileThemePickerProps {
   currentThemeId: string;
@@ -93,7 +102,7 @@ export function ProfileThemePicker({
               onClick={handleClearCache}
               className="flex items-center gap-1"
             >
-              <Refresh className="w-4 h-4" /> 
+              <RefreshCw className="w-4 h-4" /> 
               Refresh Theme
             </Button>
           </div>
