@@ -206,9 +206,14 @@
   background-size: 200% 100%;
 }
 
-/* Add the group-hover class separately */
+/* Fix the circular dependency by removing @apply with group-hover */
 .group .animation-slide::after {
-  @apply group-hover:opacity-100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.group:hover .animation-slide::after {
+  opacity: 1;
 }
 
 /* Special link styles */
